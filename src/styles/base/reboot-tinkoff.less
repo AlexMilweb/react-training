@@ -1,0 +1,23 @@
+html,
+body,
+#root {
+    height: 100%;
+}
+
+body {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
+    color: @color-black-magic;
+}
+
+::selection {
+    background: @color-yellokatya !important;
+    color: @color-black-magic !important;
+}
+
+a:hover {
+    text-decoration: none; // undo reboot.css style
+}
