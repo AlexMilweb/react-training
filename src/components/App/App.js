@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Example from '../Example/Example';
 import './App.less';
 
-class App extends React.Component {
+export default class App extends Component {
     state = {}
 
     render() {
         return (
             <div className="app">
-                App
+                <Example exampleName="Counter">
+                    This Example!
+                </Example>
             </div>
         );
     }
 }
-
-export default App;
