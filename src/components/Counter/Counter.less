@@ -1,0 +1,36 @@
+@import '../../styles/common.less';
+
+.counter {
+    display: flex;
+
+    &__button {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ccc;
+        background-color: #fefefe;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+
+        &_less {
+            border-radius: 5px 0 0 5px;
+        }
+
+        &_more {
+            border-radius: 0 5px 5px 0;
+        }
+    }
+
+    &__number {
+        padding-top: 3px;
+        min-width: 30px;
+        height: 30px;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+        font-size: 16px;
+        font-family: 'Arial';
+    }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Example from '../Example/Example';
+import Counter from '../Counter/Counter';
 import './App.less';
 
 export default class App extends Component {
@@ -9,7 +10,7 @@ export default class App extends Component {
         return (
             <div className="app">
                 <Example exampleName="Counter">
-                    This Example!
+                    <Counter />
                 </Example>
             </div>
         );
