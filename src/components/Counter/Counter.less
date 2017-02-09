@@ -24,13 +24,67 @@
     }
 
     &__number {
-        padding-top: 3px;
+        padding: 3px 10px 0;
         min-width: 30px;
+        width: auto;
         height: 30px;
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
         text-align: center;
         font-size: 16px;
         font-family: 'Arial';
+
+        &_input {
+            width: 100px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+    }
+
+    &_left {
+        .counter {
+            &__number {
+                border-left: 1px solid #ccc;
+                border-radius: 5px 0 0 5px;
+            }
+
+            &__button {
+                &_less {
+                    order: 1;
+                    border-right: none;
+                    border-radius: 0;
+                }
+
+                &_more {
+                    order: 2;
+                }
+            }
+        }
+    }
+
+    &_right {
+        .counter {
+            &__number {
+                order: 2;
+                border-right: 1px solid #ccc;
+                border-left: none;
+                border-radius: 0 5px 5px 0;
+            }
+
+            &__button {
+                &_less {
+                    border-right: none;
+                    border-radius: 5px 0 0 5px;
+                }
+
+                &_more {
+                    order: 1;
+                    border-radius: 0;
+                }
+            }
+        }
     }
 }
