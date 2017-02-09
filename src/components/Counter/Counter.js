@@ -54,7 +54,7 @@ export default class Counter extends Component {
                         className="counter__number counter__number_input"
                         type="text"
                         value={this.state.number}
-                        onChange={this.counterChange}
+                        onChange={this.counterChange.bind(this)}
                     />
                     : <div className="counter__number"> {this.state.number} </div>
                 }
