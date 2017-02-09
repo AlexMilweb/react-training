@@ -11,21 +11,18 @@ export default class Counter extends Component {
         this.setState({
             number: --this.state.number
         });
-        console.log(this.state.number + "state")
     }
 
     counterMore() {
         this.setState({
             number: ++this.state.number
         });
-        console.log(this.state.number + "state")
     }
 
     counterChange(event) {
         this.setState({
             number: event.target.value
         });
-        console.log(event.target.value)
     }
 
     render() {
