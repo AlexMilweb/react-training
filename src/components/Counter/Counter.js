@@ -4,24 +4,31 @@ import './Counter.less';
 
 export default class Counter extends Component {
     state = {
-        number: this.props.defaultNumber || 1
+        number: this.props.defaultNumber || 1,
+        step: 1
     }
 
     counterLess() {
         this.setState({
-            number: --this.state.number
+            number: +this.state.number - +this.state.step
         });
     }
 
     counterMore() {
         this.setState({
-            number: ++this.state.number
+            number: +this.state.number + +this.state.step
         });
     }
 
-    counterChange(event) {
+    counterChange(e) {
         this.setState({
-            number: event.target.value
+            number: e.target.value
+        });
+    }
+
+    onChangeStep(e) {
+        this.setState({
+            step: e.target.value
         });
     }
 
@@ -29,7 +36,8 @@ export default class Counter extends Component {
         const {
             leftNumber,
             rightNumber,
-            editField
+            editField,
+            stepField
         } = this.props
 
         return(
@@ -61,6 +69,19 @@ export default class Counter extends Component {
                     type="button"
                     onClick={this.counterMore.bind(this)}
                 > + </button>
+
+                {stepField
+                    ? <label className="counter__step">
+                        step:
+                        <input
+                            className="counter__step-input"
+                            type="text"
+                            value={this.state.step}
+                            onChange={this.onChangeStep.bind(this)}
+                        />
+                    </label>
+                    : false
+                }
             </div>
         );
     }

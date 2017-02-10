@@ -15,7 +15,10 @@ export default class App extends Component {
                     </Example>
 
                     <Example exampleProps="leftNumber, defaultNumber: 350">
-                        <Counter leftNumber defaultNumber="350"/>
+                        <Counter
+                            leftNumber
+                            defaultNumber="350"
+                        />
                     </Example>
 
                     <Example exampleProps="rightNumber">
@@ -23,7 +26,19 @@ export default class App extends Component {
                     </Example>
 
                     <Example exampleProps="rightNumber, editField, defaultNumber: 112">
-                        <Counter rightNumber editField defaultNumber="112"/>
+                        <Counter
+                            rightNumber
+                            editField
+                            defaultNumber="112"
+                        />
+                    </Example>
+
+                    <Example exampleProps="leftNumber, editField, stepField">
+                        <Counter
+                            leftNumber
+                            editField
+                            stepField
+                        />
                     </Example>
                 </Example>
             </div>

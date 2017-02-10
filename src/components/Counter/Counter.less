@@ -1,7 +1,9 @@
 @import '../../styles/common.less';
 
 .counter {
+    position: relative;
     display: flex;
+    max-width: 300px;
 
     &__button {
         width: 30px;
@@ -41,7 +43,29 @@
                 outline: none;
             }
         }
+    }
 
+    &__step {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 30px;
+    }
+
+    &__step-input {
+        margin-left: 10px;
+        padding: 3px 10px 0;
+        width: 50px;
+        height: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 16px;
+        font-family: 'Arial';
+
+        &:focus {
+            outline: none;
+        }
     }
 
     &_left {
