@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Example from '../Example/Example';
 import Counter from '../Counter/Counter';
+import Scale from '../Scale/Scale';
 import './App.less';
 
 export default class App extends Component {
@@ -40,6 +41,11 @@ export default class App extends Component {
                             stepField
                         />
                     </Example>
+                </Example>
+                <Example exampleName="Scale">
+                    <Scale
+                        simpleLevel='100'
+                    />
                 </Example>
             </div>
         );
