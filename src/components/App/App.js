@@ -43,9 +43,7 @@ export default class App extends Component {
                     </Example>
                 </Example>
                 <Example exampleName="Scale">
-                    <Scale
-                        simpleLevel='100'
-                    />
+                    <Scale />
                 </Example>
             </div>
         );

@@ -35,6 +35,18 @@
         list-style: none;
     }
 
+    &__controls-section {
+        margin-bottom: 10px;
+        padding: 5px 15px 10px;
+        border: 1px solid #ccc;
+    }
+
+    &__controls-title {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
     &__item {
         border-top: 1px solid #777;
         text-align: right;
@@ -52,6 +64,10 @@
 
         &:focus {
             outline: none;
+        }
+
+        &[name='current'] {
+            pointer-events: none;
         }
     }
 

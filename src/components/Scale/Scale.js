@@ -4,20 +4,18 @@ import './Scale.less';
 export default class Scale extends Component {
     state = {
         maxScale: +this.props.maxScale || 600,
-        minScale: +this.props.minScale || 1,
         steps: +this.props.steps || 5,
-        heightScale: 600 / (+this.props.steps || 5),
         simpleLevel: +this.props.simpleLevel || 0,
         addCounter: +this.props.addCounter || 100
     }
 
-    addGraduation() {
+    addGraduation = () => {
         const step = this.state.maxScale / this.state.steps;
         let arrSteps = [];
 
         for (let i = 0; i <= this.state.maxScale; i += step) {
             const style = {
-                height: this.state.heightScale + 'px'
+                height: step * (600 / this.state.maxScale) + 'px'
             }
 
             arrSteps.push(
@@ -31,23 +29,43 @@ export default class Scale extends Component {
         return arrSteps;
     }
 
-    addLevel() {
-        this.setState({
-            simpleLevel: this.state.simpleLevel + this.state.addCounter
-        });
+    handleAddLevel = () => {
+        if (this.state.simpleLevel + this.state.addCounter <= this.state.maxScale) {
+            this.setState({
+                simpleLevel: this.state.simpleLevel + this.state.addCounter
+            });
+        }
     }
 
-    pourLevel() {
-        this.setState({
-            simpleLevel: this.state.simpleLevel - this.state.addCounter
-        });
+    handlePourLevel = () => {
+        if (this.state.simpleLevel - this.state.addCounter >= 0) {
+            this.setState({
+                simpleLevel: this.state.simpleLevel - this.state.addCounter
+            });
+        }
     }
 
-    onChangeCounter(e) {
+    onChangeCounter = e => {
         const val = e.target.value;
 
         this.setState({
             addCounter: +val
+        });
+    }
+
+    onChangeMaxScale = e => {
+        const val = e.target.value;
+
+        this.setState({
+            maxScale: +val
+        });
+    }
+
+    onChangeSteps = e => {
+        const val = e.target.value;
+
+        this.setState({
+            steps: +val
         });
     }
 
@@ -57,33 +75,73 @@ export default class Scale extends Component {
                 <div className='scale__line-wrap'>
                     <div
                         className='scale__line-inner'
-                        style={{transform: 'translateY(-' + this.state.simpleLevel + 'px)'}}
+                        style={{transform: 'translateY(-' + this.state.simpleLevel * (600 / this.state.maxScale) + 'px)'}}
                     />
                 </div>
                 <ul className='scale__graduation'>
                     {this.addGraduation()}
                 </ul>
                 <div className='scale__controls'>
-                    <input
-                        className='scale__input'
-                        name='quantity'
-                        value={this.state.addCounter}
-                        onChange={this.onChangeCounter.bind(this)}
-                    />
-                    <button
-                        className='scale__button'
-                        value={this.state.simpleLevel}
-                        onClick={this.addLevel.bind(this)}
-                    >
-                        Добавить
-                    </button>
-                    <button
-                        className='scale__button'
-                        value={this.state.simpleLevel}
-                        onClick={this.pourLevel.bind(this)}
-                    >
-                        Вылить
-                    </button>
+                    <section className='scale__controls-section'>
+                        <div className='scale__controls-title'>
+                            Current level
+                        </div>
+                        <input
+                            className='scale__input'
+                            name='current'
+                            value={this.state.simpleLevel}
+                        />
+                    </section>
+
+                    <section className='scale__controls-section'>
+                        <div className='scale__controls-title'>
+                            Counter
+                        </div>
+                        <input
+                            className='scale__input'
+                            name='quantity'
+                            value={this.state.addCounter}
+                            onChange={this.onChangeCounter}
+                        />
+                        <button
+                            className='scale__button'
+                            value={this.state.simpleLevel}
+                            onClick={this.handleAddLevel}
+                        >
+                            Добавить
+                        </button>
+                        <button
+                            className='scale__button'
+                            value={this.state.simpleLevel}
+                            onClick={this.handlePourLevel}
+                        >
+                            Вылить
+                        </button>
+                    </section>
+
+                    <section className='scale__controls-section'>
+                        <div className='scale__controls-title'>
+                            Max Scale
+                        </div>
+                        <input
+                            className='scale__input'
+                            name='maxScale'
+                            value={this.state.maxScale}
+                            onChange={this.onChangeMaxScale}
+                        />
+                    </section>
+
+                    <section className='scale__controls-section'>
+                        <div className='scale__controls-title'>
+                            Steps graduation
+                        </div>
+                        <input
+                            className='scale__input'
+                            name='steps'
+                            value={this.state.steps}
+                            onChange={this.onChangeSteps}
+                        />
+                    </section>
                 </div>
             </div>
         );
