@@ -54,10 +54,14 @@ export default class Scale extends Component {
     }
 
     onChangeMaxScale = e => {
-        const val = e.target.value;
+        const val = +e.target.value;
+
+        if (val <= 0) {
+            return;
+        }
 
         this.setState({
-            maxScale: +val
+            maxScale: val
         });
     }
 
