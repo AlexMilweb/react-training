@@ -11,6 +11,13 @@
         border: 1px solid #ccc;
         background-color: #fefefe;
         cursor: pointer;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+
+        &:hover {
+            background-color: #333;
+            border-color: #333;
+            color: white;
+        }
 
         &:focus {
             outline: none;
