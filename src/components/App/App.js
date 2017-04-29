@@ -11,7 +11,10 @@ export default class App extends Component {
     render() {
         return (
             <div className='app'>
-                <Example exampleName='Timer'>
+                <Example
+                    exampleName='Timer'
+                    background='black'
+                >
                     <Timer />
                 </Example>
                 <Example exampleName='Counter'>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import './Example.less';
 
 export default class Example extends Component {
@@ -6,19 +7,25 @@ export default class Example extends Component {
         const {
             exampleName,
             exampleProps,
-            children
+            children,
+            background
         } = this.props;
 
         return (
-            <section className="example">
+            <section
+                className={classNames({
+                    'example': true,
+                    [`example_${background}`]: background
+                })}
+            >
                 {exampleName ?
-                    <h2 className="example__name">
+                    <h2 className='example__name'>
                         {exampleName}
                     </h2>
                     : false
                 }
 
-                <p className="example__props">
+                <p className='example__props'>
                     {exampleProps
                         ? <span>Props: </span>
                         : false
@@ -26,7 +33,7 @@ export default class Example extends Component {
                     {exampleProps}
                 </p>
 
-                <div className="example__content">
+                <div className='example__content'>
                     {children}
                 </div>
 

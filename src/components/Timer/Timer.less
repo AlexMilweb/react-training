@@ -1,9 +1,29 @@
 @import '../../styles/common.less';
 
+@keyframes collapse {
+    from {
+        transform: scaleY(1);
+    }
+
+    to {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes collapseReverse {
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
 .timer {
-    padding: 5px;
+    padding: 10px;
     display: inline-flex;
-    border: 1px solid #444;
+    background-color: white;
 
     &__group {
         margin-right: 5px;
@@ -15,16 +35,83 @@
     }
 
     &__numeral {
+        position: relative;
         margin-right: 1px;
         width: 50px;
         height: 80px;
         line-height: 80px;
         border-radius: 5px;
-        background-color: #444;
         font-family: Arial;
         font-weight: bold;
         font-size: 60px;
         color: white;
         text-align: center;
+        overflow: hidden;
+
+        &-top,
+        &-bottom,
+        &-top-back,
+        &-bottom-back {
+            position: absolute;
+            overflow: hidden;
+            width: 50px;
+            height: 40px;
+            left: 0;
+        }
+
+        &-top {
+            top: 0;
+
+            .timer__numeral-full {
+                transform: scaleY(0);
+                border-radius: 5px 5px 0 0;
+            }
+        }
+
+        &-top-back {
+            top: 0;
+        }
+
+        &-bottom {
+            bottom: 0;
+
+            .timer__numeral-full {
+                transform: scaleY(1);
+                border-radius: 0 0 5px 5px;
+            }
+        }
+
+        &-bottom-back {
+            bottom: 0;
+        }
+
+        &-full {
+            background-color: #000;
+            box-shadow: inset 0 0 5px 2px #888;
+        }
+    }
+
+    &__numeral_active &__numeral-top .timer__numeral-full {
+        animation-name: collapse;
+        animation-duration: 0.45s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    }
+
+    &__numeral_active &__numeral-bottom .timer__numeral-full {
+        animation-name: collapseReverse;
+        animation-duration: 0.45s;
+        animation-delay: 0.45s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+        transform: scaleY(0);
+    }
+
+    &__numeral-bottom &__numeral-full,
+    &__numeral-bottom-back &__numeral-full {
+        position: absolute;
+        bottom: 0;
+        width: 50px;
+        height: 80px;
     }
 }
